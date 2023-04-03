@@ -12,24 +12,24 @@ class Skill(ABC):
 
     @property
     @abstractmethod
-    def name(self):
+    def name(self) -> str:
         pass
 
     @property
     @abstractmethod
-    def stamina(self):
+    def stamina(self) -> int:
         pass
 
     @property
     @abstractmethod
-    def damage(self):
+    def damage(self) -> int:
         pass
 
     @abstractmethod
     def skill_effect(self) -> str:
         pass
 
-    def _is_stamina_enough(self):
+    def _is_stamina_enough(self) -> bool:
         return self.user.stamina >= self.stamina
 
     def use(self, user, target) -> str:
@@ -49,7 +49,7 @@ class FuryPunch(Skill):
     stamina = 6
     damage = 12
 
-    def skill_effect(self):
+    def skill_effect(self) -> str:
         # TODO логика использования скилла -> return str
         # TODO в классе нам доступны экземпляры user и target - можно использовать любые их методы
         # TODO именно здесь происходит уменьшение стамины у игрока применяющего умение и
@@ -65,7 +65,7 @@ class HardShot(Skill):
     stamina = 5
     damage = 15
 
-    def skill_effect(self):
+    def skill_effect(self) -> str:
         self.user.stamina -= self.stamina
         self.target.hp -= self.damage
         return f'{self.user.name} использует {self.name} и наносит {self.damage} урона сопернику.'

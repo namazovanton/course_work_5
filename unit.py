@@ -23,24 +23,24 @@ class BaseUnit(ABC):
         self._is_skill_used = False
 
     @property
-    def health_points(self):
+    def health_points(self) -> float:
         return round(self.hp, 1)
 
     @property
-    def stamina_points(self):
+    def stamina_points(self) -> float:
         return round(self.stamina, 1)
 
-    def equip_weapon(self, weapon: Weapon):
+    def equip_weapon(self, weapon: Weapon) -> None:
         # TODO присваиваем нашему герою новое оружие
         self.weapon = weapon
         # return f"{self.name} экипирован оружием {self.weapon.name}"
 
-    def equip_armor(self, armor: Armor):
+    def equip_armor(self, armor: Armor) -> None:
         # TODO одеваем новую броню
         self.armor = armor
         # return f"{self.name} экипирован броней {self.armor.name}"
 
-    def _count_damage(self, target: BaseUnit) -> int:
+    def _count_damage(self, target: BaseUnit) -> float:
         # TODO Эта функция должна содержать:
         #  логику расчета урона игрока
         #  логику расчета брони цели
@@ -60,7 +60,7 @@ class BaseUnit(ABC):
         target.get_damage(damage)
         return damage
 
-    def get_damage(self, damage: int):
+    def get_damage(self, damage: int) -> None:
         # TODO получение урона целью
         #      присваиваем новое значение для аттрибута self.hp
         if damage > 0:

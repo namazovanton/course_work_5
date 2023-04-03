@@ -26,7 +26,7 @@ class Weapon:
     stamina_per_hit: float
 
     @property
-    def damage(self):
+    def damage(self) -> float:
         return round(uniform(self.min_damage, self.min_damage), 1)
 
 
@@ -48,7 +48,7 @@ class Equipment:
                 return weapon
         return None
 
-    def get_armor(self, armor_name) -> Armor:
+    def get_armor(self, armor_name) -> Optional[Armor]:
         # TODO возвращает объект брони по имени
         for armor in self.equipment.armors:
             if armor.name == armor_name:
